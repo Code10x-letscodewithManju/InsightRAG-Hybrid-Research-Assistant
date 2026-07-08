@@ -57,3 +57,10 @@ CHUNK_OVERLAP = 150
 VECTOR_TOP_K = 8
 BM25_TOP_K = 8
 FINAL_TOP_K = 4
+
+
+# ==================================================
+# Hybrid Retrieval
+# ==================================================
+
+ENSEMBLE_WEIGHTS = [0.7, 0.3]
