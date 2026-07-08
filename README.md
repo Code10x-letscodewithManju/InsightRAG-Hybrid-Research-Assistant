@@ -352,6 +352,18 @@ streamlit run app.py
 
 ---
 
+
+## Testing
+
+Basic integration tests are available under the `tests/` directory to validate the major components of the pipeline.
+
+Run an individual test:
+
+```bash
+python tests/test_pipeline.py
+
+
+
 # 💬 Example Questions
 
 ### Technical Documents
