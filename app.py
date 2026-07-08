@@ -2,7 +2,9 @@ from config import SAMPLE_DOCS_DIR
 
 from src.ingestion.parser import PDFParser
 from src.ingestion.chunker import DocumentChunker
+
 from src.retrieval.retriever import HybridRetriever
+from src.retrieval.reranker import Reranker
 
 
 parser = PDFParser(SAMPLE_DOCS_DIR)
@@ -18,11 +20,24 @@ results = retriever.retrieve(
     "What is polymorphism?"
 )
 
-print(f"\nRetrieved {len(results)} Documents\n")
+print(f"\nRetrieved : {len(results)}")
 
-for i, doc in enumerate(results, start=1):
+reranker = Reranker()
+
+top_docs = reranker.rerank(
+    "What is polymorphism?",
+    results,
+)
+
+print(f"After Reranking : {len(top_docs)}")
+
+for i, doc in enumerate(top_docs, 1):
+
     print("=" * 80)
-    print(f"Result {i}")
+    print(f"Rank {i}")
+
     print(doc.metadata["filename"])
-    print(f"Page : {doc.metadata['page']}")
-    print(doc.page_content[:300])
+
+    print(doc.metadata["page"])
+
+    print(doc.page_content[:350])

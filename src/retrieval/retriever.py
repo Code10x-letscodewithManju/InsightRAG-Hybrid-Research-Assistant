@@ -5,10 +5,13 @@ Hybrid retriever for InsightRAG.
 from typing import List
 
 from langchain_core.documents import Document
-from langchain_classic.retrievers import (
-    EnsembleRetriever,
-    BM25Retriever,
-)
+# from langchain_classic.retrievers import (
+#     EnsembleRetriever,
+#     BM25Retriever,
+# )
+
+from langchain_classic.retrievers import EnsembleRetriever
+from langchain_community.retrievers import BM25Retriever
 
 from config import (
     VECTOR_TOP_K,
