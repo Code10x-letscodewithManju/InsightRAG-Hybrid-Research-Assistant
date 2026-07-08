@@ -1,5 +1,5 @@
 # 🧠 InsightRAG: A Hybrid RAG Research Assistant
-
+ > ## Research Agent (with Citations)
 > **An explainable document question-answering system that combines Hybrid Retrieval, Cross-Encoder Reranking, and Large Language Models to generate grounded, citation-backed answers from uploaded PDF documents.**
 
 <p align="center">
