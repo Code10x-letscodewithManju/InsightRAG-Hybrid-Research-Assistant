@@ -6,6 +6,11 @@ from src.ingestion.chunker import DocumentChunker
 from src.retrieval.retriever import HybridRetriever
 from src.retrieval.reranker import Reranker
 
+from src.llm.generator import AnswerGenerator
+
+
+QUESTION = "What is polymorphism?"
+
 
 parser = PDFParser(SAMPLE_DOCS_DIR)
 documents = parser.load_documents()
@@ -16,28 +21,24 @@ chunks = chunker.chunk_documents(documents)
 retriever = HybridRetriever()
 retriever.build(chunks)
 
-results = retriever.retrieve(
-    "What is polymorphism?"
-)
-
-print(f"\nRetrieved : {len(results)}")
+retrieved_docs = retriever.retrieve(QUESTION)
 
 reranker = Reranker()
 
 top_docs = reranker.rerank(
-    "What is polymorphism?",
-    results,
+    QUESTION,
+    retrieved_docs,
 )
 
-print(f"After Reranking : {len(top_docs)}")
+generator = AnswerGenerator()
 
-for i, doc in enumerate(top_docs, 1):
+answer = generator.generate(
+    QUESTION,
+    top_docs,
+)
 
-    print("=" * 80)
-    print(f"Rank {i}")
-
-    print(doc.metadata["filename"])
-
-    print(doc.metadata["page"])
-
-    print(doc.page_content[:350])
+print("\n")
+print("=" * 100)
+print("FINAL ANSWER")
+print("=" * 100)
+print(answer)
