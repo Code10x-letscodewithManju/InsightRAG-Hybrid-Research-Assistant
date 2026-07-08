@@ -79,11 +79,28 @@ class InsightRAG:
         )
 
         # Step 5 - Calculate confidence
-        confidence = ConfidenceCalculator.calculate(
-            retrieved=len(retrieved),
-            reranked=len(reranked),
-            citations=len(citations),
-        )
+        answer_lower = answer.lower()
+
+        negative_phrases = [
+            "couldn't find",
+            "not enough information",
+            "not mentioned",
+            "does not contain",
+            "do not contain",
+            "there is no",
+            "no information",
+            "not available",
+            "insufficient information",
+        ]
+
+        if any(phrase in answer_lower for phrase in negative_phrases):
+            confidence = "Low"
+        else:
+            confidence = ConfidenceCalculator.calculate(
+                retrieved=len(retrieved),
+                reranked=len(reranked),
+                citations=len(citations),
+            )
 
         # Step 6 - Return structured response
         return AnswerResponse(

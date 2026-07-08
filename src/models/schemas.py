@@ -15,10 +15,6 @@ class Citation(BaseModel):
 class RetrievalStats(BaseModel):
     retrieved_documents: int
     reranked_documents: int
-    embedding_model: str
-    retriever: str
-    reranker: str
-    llm: str
 
 
 class AnswerResponse(BaseModel):
