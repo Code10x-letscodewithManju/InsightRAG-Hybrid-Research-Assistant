@@ -1,4 +1,4 @@
-# 🧠 InsightRAG: A Hybrid Retrieval-Augmented Generation (RAG) Research Assistant
+# 🧠 InsightRAG: A Hybrid RAG Research Assistant
 
 > **An explainable document question-answering system that combines Hybrid Retrieval, Cross-Encoder Reranking, and Large Language Models to generate grounded, citation-backed answers from uploaded PDF documents.**
 
@@ -337,7 +337,7 @@ streamlit run app.py
 
 ---
 
-# ▶️ Usage
+# Usage
 
 1. Launch the Streamlit application.
 2. Upload one or more PDF documents.
@@ -385,41 +385,54 @@ streamlit run app.py
 
 ## Home Page
 
-```
-assets/home.png
-```
 
----
+<p align="center">
+  <img src="assets/home.png" width="100%">
+</p>
 
-## Knowledge Base Creation
+<p align="center">
+<i>InsightRAG Home Interface</i>
+</p>
 
-```
-assets/upload.png
-```
 
 ---
 
 ## Answer Generation
 
-```
-assets/answer.png
-```
+<p align="center">
+  <img src="assets/response1.png" width="100%">
+</p>
+
+<p align="center">
+<i>Example of a grounded response generated from uploaded documents.</i>
+</p>
+
 
 ---
 
 ## Source Citations
 
-```
-assets/sources.png
-```
+<p align="center">
+  <img src="assets/response2.png" width="100%">
+</p>
+
+<p align="center">
+<i>Answer with supporting source citations.</i>
+</p>
+
 
 ---
 
 ## Retrieval Insights
 
-```
-assets/insights.png
-```
+<p align="center">
+  <img src="assets/insights.png" width="100%">
+</p>
+
+<p align="center">
+<i>Confidence score and retrieval statistics displayed to the user.</i>
+</p>
+
 
 ---
 
@@ -430,7 +443,6 @@ Although the system performs well for document question answering, several limit
 - FAISS index is rebuilt whenever new documents are uploaded.
 - OCR is not implemented for scanned PDFs.
 - Confidence score is heuristic rather than model-calibrated.
-- The application currently focuses on English-language documents.
 
 ---
 
